@@ -50,10 +50,16 @@ public class BatchProcessStarter {
 			jobExecution = getJobRepository().getLastJobExecution(getThirdJob().getName(), builder.toJobParameters());
 			logger.debug(jobExecution.toString());
 		
-		} catch (JobExecutionAlreadyRunningException 
-					| JobRestartException
-					| JobInstanceAlreadyCompleteException
-					| JobParametersInvalidException e) {
+		} catch (JobExecutionAlreadyRunningException e)
+		{
+			logger.error(e);
+		}catch (JobRestartException e)
+		{
+			logger.error(e);
+		}catch (JobInstanceAlreadyCompleteException e)
+		{
+			logger.error(e);
+		}catch (JobParametersInvalidException e) {
 			logger.error(e);
 		}
 			
